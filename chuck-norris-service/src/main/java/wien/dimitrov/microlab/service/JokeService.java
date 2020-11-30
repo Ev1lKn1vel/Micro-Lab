@@ -19,6 +19,5 @@ public class JokeService {
         Response response = jokeClient.getRandomJoke();
         Joke joke = response.readEntity(Joke.class);
         return joke;
-
     }
 }

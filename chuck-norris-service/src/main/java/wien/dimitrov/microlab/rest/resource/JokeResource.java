@@ -1,7 +1,10 @@
 package wien.dimitrov.microlab.rest.resource;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import wien.dimitrov.microlab.model.Joke;
 import wien.dimitrov.microlab.rest.client.JokeClient;
+import wien.dimitrov.microlab.rest.interceptor.Logged;
+import wien.dimitrov.microlab.service.JokeService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -14,15 +17,16 @@ import javax.ws.rs.core.Response;
 @Path("/joke")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Logged
 public class JokeResource {
 
     @Inject
-    @RestClient
-    JokeClient jokeClient;
+    JokeService jokeService;
 
     @Path("/chuck-norris")
     @GET
     public Response getChuckNorrisJoke(){
-        return jokeClient.getRandomJoke();
+        Joke joke = jokeService.getRandomJoke();
+        return Response.ok(joke).build();
     }
 }

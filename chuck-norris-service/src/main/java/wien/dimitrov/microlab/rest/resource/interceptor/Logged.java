@@ -1,4 +1,4 @@
-package wien.dimitrov.microlab.rest.interceptor;
+package wien.dimitrov.microlab.rest.resource.interceptor;
 
 import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;

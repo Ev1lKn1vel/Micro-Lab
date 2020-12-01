@@ -1,9 +1,7 @@
 package wien.dimitrov.microlab.rest.resource;
 
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 import wien.dimitrov.microlab.model.Joke;
-import wien.dimitrov.microlab.rest.client.JokeClient;
-import wien.dimitrov.microlab.rest.interceptor.Logged;
+import wien.dimitrov.microlab.rest.resource.interceptor.Logged;
 import wien.dimitrov.microlab.service.JokeService;
 
 import javax.inject.Inject;

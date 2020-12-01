@@ -1,4 +1,4 @@
-package wien.dimitrov.microlab.rest.interceptor;
+package wien.dimitrov.microlab.rest.resource.interceptor;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -14,17 +14,17 @@ import java.util.logging.Logger;
 
 @Logged
 @Provider
-public class ResponseLoggingFilter implements ContainerResponseFilter {
+public class ServerResponseLoggingFilter implements ContainerResponseFilter {
 
-    private final static Logger logger = Logger.getLogger(ResponseLoggingFilter.class.getName());
+    private final static Logger logger = Logger.getLogger(ServerResponseLoggingFilter.class.getName());
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
         ObjectWriter objectWriter = new ObjectMapper().setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.PUBLIC_ONLY).writer();
 
-        logger.info("[Request " + containerRequestContext.getMethod() + " "
+        logger.info("[Server Request " + containerRequestContext.getMethod() + " "
                 + containerRequestContext.getUriInfo().getRequestUri().getPath()
-                + " - Response Status: " + containerResponseContext.getStatus() + " "
+                + " - Server Response Status: " + containerResponseContext.getStatus() + " "
                 + " [" + objectWriter.writeValueAsString(containerResponseContext.getEntity()) + "]");
     }
 }

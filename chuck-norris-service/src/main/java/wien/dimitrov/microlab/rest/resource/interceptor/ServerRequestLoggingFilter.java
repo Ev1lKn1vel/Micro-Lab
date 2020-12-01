@@ -1,4 +1,4 @@
-package wien.dimitrov.microlab.rest.interceptor;
+package wien.dimitrov.microlab.rest.resource.interceptor;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 
 @Logged
 @Provider
-public class RequestLoggingFilter implements ContainerRequestFilter {
+public class ServerRequestLoggingFilter implements ContainerRequestFilter {
 
-    private final static Logger logger = Logger.getLogger(RequestLoggingFilter.class.getName());
+    private final static Logger logger = Logger.getLogger(ServerRequestLoggingFilter.class.getName());
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        logger.info("[Request - " + containerRequestContext.getMethod() + " "
+        logger.info("[Server Request - " + containerRequestContext.getMethod() + " "
                 + containerRequestContext.getUriInfo().getRequestUri().getPath()
                 + "]");
     }

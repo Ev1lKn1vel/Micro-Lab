@@ -1,13 +1,11 @@
-package wien.dimitrov.microlab.model;
+package wien.dimitrov.microlab.rest.client.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Joke {
+public class DadJoke {
 
-    @JsonProperty("value")
-    public String joke;
+    private String joke;
 
     public String getJoke() {
         return joke;

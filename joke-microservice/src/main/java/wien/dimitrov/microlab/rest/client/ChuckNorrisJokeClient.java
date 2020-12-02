@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
         @RegisterProvider(ClientRequestLoggingFilter.class),
         @RegisterProvider(ClientResponseLoggingFilter.class)
 })
-public interface JokeClient {
+public interface ChuckNorrisJokeClient {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

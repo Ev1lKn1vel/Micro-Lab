@@ -1,8 +1,9 @@
 package wien.dimitrov.microlab.rest.resource;
 
-import wien.dimitrov.microlab.model.Joke;
+import wien.dimitrov.microlab.dto.JokeDto;
 import wien.dimitrov.microlab.rest.resource.interceptor.Logged;
-import wien.dimitrov.microlab.service.JokeService;
+import wien.dimitrov.microlab.service.ChuckNorrisJokeService;
+import wien.dimitrov.microlab.service.DadJokeService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -19,12 +20,22 @@ import javax.ws.rs.core.Response;
 public class JokeResource {
 
     @Inject
-    JokeService jokeService;
+    ChuckNorrisJokeService chuckNorrisjokeService;
+
+    @Inject
+    DadJokeService dadJokeService;
+
 
     @Path("/chuck-norris")
     @GET
     public Response getChuckNorrisJoke(){
-        Joke joke = jokeService.getRandomJoke();
+        JokeDto joke = chuckNorrisjokeService.getRandomJoke();
+        return Response.ok(joke).build();
+    }
+    @Path("/dad")
+    @GET
+    public Response getDadJoke(){
+        JokeDto joke = dadJokeService.getRandomJoke();
         return Response.ok(joke).build();
     }
 }

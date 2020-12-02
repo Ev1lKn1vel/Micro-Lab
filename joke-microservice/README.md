@@ -1,4 +1,4 @@
-# chuck-norris-service project
+# joke-microservice project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
